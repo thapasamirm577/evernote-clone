@@ -1,0 +1,14 @@
+import {combineReducers} from 'redux'
+import {
+    firebaseReducer
+  } from 'react-redux-firebase'
+import { firestoreReducer } from 'redux-firestore';
+import noteReducer from './noteReducers';
+
+  
+const rootReducer = combineReducers({
+    note:noteReducer,
+    firebase: firebaseReducer,
+    firestore: firestoreReducer 
+  })
+  export default rootReducer;
