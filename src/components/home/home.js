@@ -2,7 +2,7 @@ import React from 'react'
 import Form from './form'
 import {useSelector} from 'react-redux';
 import {useFirestoreConnect} from 'react-redux-firebase';
-import NoteList from '../notes/notelist'
+import NoteList from '../notes/notelist';
 
 const Home =()=> {
     useFirestoreConnect([{collection:'notes',orderBy:['createAt','desc']}])
@@ -10,14 +10,19 @@ const Home =()=> {
 
     return (
         <div>
+        
             <div className="container">
                 <div className="row center-align">
+
+                    {/* userInput form */}
                     <div className="col-s7"><Form /></div>
                     <div className='notesHereContainer'>
                        <div className='before-after'></div>
                        <div className='col-s5 notesHere'>Notes are here</div>
                        <div className='before-after'></div>
                     </div>
+
+                    {/* included note list here */}
                     <div className='after'></div>
                     <div className="col-s5"><NoteList notelist={notes} /></div>
                 </div>

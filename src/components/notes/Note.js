@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Button, Fade, Modal } from '@material-ui/core';
 import Backdrop from '@material-ui/core/Backdrop';
 import { makeStyles } from '@material-ui/core/styles';
+import {withRouter} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,24 +56,39 @@ function Note({ note }) {
     };
     return (
         <div>
+    
             <div className='note white'>
+
+                {/* like and delete action icon */}
                 <div className='right-align' >
                     <i className='material-icons red-text' style={{ cursor: 'pointer' }} onClick={toggleFavHandler}>{FullFavIcon}</i>
                     <i className='material-icons ' style={{ cursor: 'pointer' }} onClick={handleOpen}>delete</i>
 
                 </div>
+
+                {/* note title  */}
                 <h5 className='black-text'>{note.title}</h5>
+
+                {/* Note content is here */}
                 <p className='truncate'>{note.content}</p>
-                <Link to={'/note/' + note.id}>
+
+                {/* see more about note */}
+                <Link to={`/note/${note.id}`}>
                     <p className='changeColor'>See more...</p>
                 </Link>
+                
+                
+                {/* date for note */}
                 <p className='grey-text'>{moment(note.createAt.toDate()).fromNow()}</p>
+                
+                {/* edit note from edit icon */}
                 <div className='right-align'>
                     <Link to={`/edit-form/${note.id}`}>
                         <i className='material-icons changeColor' style={{ cursor: 'pointer' }} onClick={editNoteHandler}>edit</i>
                     </Link>
                 </div>
-
+                
+                {/* //Modal for deletion */}
                 <Modal
                     aria-labelledby="transition-modal-title"
                     aria-describedby="transition-modal-description"
@@ -104,4 +120,4 @@ function Note({ note }) {
     )
 }
 
-export default Note
+export default withRouter(Note);

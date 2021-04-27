@@ -1,5 +1,7 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore'
+import 'firebase/firestore';
+import 'firebase/auth';
+
 var firebaseConfig = {
     apiKey: "AIzaSyAE__0uFE3eSDOn-9Y5PunnPEylQd0WGI8",
     authDomain: "evernote-clone-76ff7.firebaseapp.com",
@@ -10,4 +12,7 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
 export default firebase;
+export {auth,db};

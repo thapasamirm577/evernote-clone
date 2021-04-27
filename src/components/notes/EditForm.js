@@ -2,9 +2,13 @@ import React from 'react';
 import userInput from '../../customHook/useInput';
 import {editNote} from '../../store/actions/noteActions'
 import {useDispatch,useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {useHistory,withRouter} from 'react-router-dom';
+
+
 const EditForm = () => {
     const note = useSelector((state) =>state.note )
+
+    //custom hook to update and store value using userInput
     const [title, bindTitle, resetTitle] =userInput(note.title)
     const [content, bindContent, resetContent] =userInput(note.content)
     const dispatch = useDispatch()
@@ -37,4 +41,4 @@ const EditForm = () => {
     )
 }
 
-export default EditForm
+export default withRouter(EditForm);
